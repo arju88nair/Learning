@@ -1,0 +1,23 @@
+
+Global Interpretor lock (https://www.youtube.com/watch?v=Obt-vMVdM8s)
+	- For threads with a count of 50000000 it takes 10 secs for example and the same thing without threads take 5 secs
+	- As per the talk provided in link , as more the cores are getting used, threads use less time, Go figure!
+
+Python interpretor uses POSIX threads
+	- Real threads
+	- Windows threads
+	- Managed by the host system
+	- Interpreter inhibits parallel tasks -for performance 
+
+Advatage of GIL 
+	- Co-operative multitasking
+	-  A thread runs till you give up,ie,I/o operation.Then another takes the thread
+
+CPU bound tasks never gives up threads
+	- Handled as a special case
+	- Check takes place every 100 ticks
+
+
+
+
+
