@@ -18,6 +18,7 @@ CPU bound tasks never gives up threads
 	- Check takes place every 100 ticks
 
 
-
+Tick 
+	- One machine instruction
 
 

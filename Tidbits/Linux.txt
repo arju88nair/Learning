@@ -1,0 +1,2 @@
+Make command
+ - The make command accepts targets as command line arguments. These targets are usually specified in a file named 'Makefile', which also contains the associated action corresponding to the targets.
