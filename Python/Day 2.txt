@@ -21,4 +21,35 @@ CPU bound tasks never gives up threads
 Tick 
 	- One machine instruction
 
+Check
+	- Resets the tick counter	
+	- Runs singnal handlers if the main thread
+	- Reeasae the GIL
+	- Reacquires the GIL
+
+
+Python interpreter provides ony one lock for all thread sync prmitives
+	- Not a simple mutex lock
+	- GIL is an instance of this lock
+	
+An underscore (_) at the beginning is used to denote private variables in Python.	
+
+Getters and setters example
+
+	class Celsius:
+	    def __init__(self, temperature = 0):
+	        self.set_temperature(temperature)
+
+	    def to_fahrenheit(self):
+	        return (self.get_temperature() * 1.8) + 32
+
+	    # new update
+	    def get_temperature(self):
+	        return self._temperature
+
+	    def set_temperature(self, value):
+	        if value < -273:
+	            raise ValueError("Temperature below -273 is not possible")
+	        self._temperature = value
+
 
