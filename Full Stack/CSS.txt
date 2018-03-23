@@ -11,3 +11,21 @@ Usage :
 element {
   background-color: var(--main-bg-color);
 }
+
+Preprocessors -  Pre-processors extend CSS with variables, operators, interpolations, functions, mixins etc
+
+Nesting in preprocessors.
+
+Mixins - Mixins are set of definitions that compiles according to some parameters or static rules. With them you can easily write cross-browser background gradients or CSS arrows etc.
+Eg :
+@mixin bordered($width) {
+    border: $width solid #ddd;
+
+    &:hover {
+        border-color: #999;
+    }
+}
+
+h1 {
+    @include bordered(5px);
+}
