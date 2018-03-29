@@ -1,0 +1,17 @@
+APIs
+
+Application programming interface (API) is a set of subroutine definitions, protocols, and tools for building application software
+
+It is a set of clearly defined methods of communication between various software components
+
+It should use web standards where they make sense
+It should be friendly to the developer and be explorable via a browser address bar
+
+Filtering,sorting,searching,limiting fields
+
+
+
+
+SSL certificates create an encrypted connection and establish trust.
+
+Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client—typically a web server (website) and a browser, or a mail server and a mail client (e.g., Outlook).

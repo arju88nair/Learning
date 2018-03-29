@@ -1,0 +1,14 @@
+Relational databases like MySQL, PostgreSQL and SQLite3 represent and store data in tables and rows. 
+
+They're based on a branch of algebraic set theory known as relational algebra.
+
+The Mongo import utility can import JSON, CSV and TSV file formats.
+
+Mongo query targets of data are technically represented as BSON (binary JASON).
+
+Relational databases use Structured Querying Language (SQL), making them a good choice for applications that involve the management of several 
+transactions. 
+
+ACID -  Atomicity (each transaction be "all or nothing"), Consistency (any transaction will bring the database from one valid state to another), Isoloation (concurrent execution of transactions results in a system state that would be obtained if transactions were executed sequentially), Durability (once a transaction has been committed, it will remain so)
+
+Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm

@@ -1,0 +1,12 @@
+Callback functions
+-------------------
+
+They are derived from a programming paradigm known as functional programmings
+
+A callback function, also known as a higher-order function, is a function that is passed to another function
+Eg:
+
+$("#btn_1").click(function() {
+  alert("Btn 1 Clicked");
+});
+
