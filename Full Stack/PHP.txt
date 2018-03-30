@@ -2,6 +2,8 @@ Polymorphism - which classes have different functionality while sharing a common
 
 Impplements to extend an interface in PM
 
+An interface is similar to a class except that it cannot contain code. An interface can define method names and arguments, but not the contents of the methods
+
    <?php
 interface Shape {
    public function getArea();
@@ -44,3 +46,11 @@ $circle = new Circle(7);
 echo calculateArea($square), "<br/>";
 echo calculateArea($circle);
 ?>
+
+
+
+
+An abstract class is a mix between an interface and a class. It can define functionality as well as interface 
+
+
+Encapsulation - Packing of data and functions into a single component
