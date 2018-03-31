@@ -48,9 +48,9 @@ echo calculateArea($circle);
 ?>
 
 
-
-
 An abstract class is a mix between an interface and a class. It can define functionality as well as interface 
 
-
 Encapsulation - Packing of data and functions into a single component
+
+Singleton pattern in order to restrict the number of instances that can be created from a resource consuming class to only one.
+Example: Database instantiation

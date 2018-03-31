@@ -15,3 +15,20 @@ Filtering,sorting,searching,limiting fields
 SSL certificates create an encrypted connection and establish trust.
 
 Secure Sockets Layer (SSL) is a standard security technology for establishing an encrypted link between a server and a client—typically a web server (website) and a browser, or a mail server and a mail client (e.g., Outlook).
+
+
+A service-oriented architecture (SOA) is a style of software design where services are provided to the other components by application components, through a communication protocol over a network. 
+The basic principles of service-oriented architecture are independent of vendors, products and technologies.
+A service is a discrete unit of functionality that can be accessed remotely and acted upon and updated independently, such as retrieving a credit card statement online.
+
+
+ Microservices Architectural Style as a specialisation of SOA. Don't forget that one of the accepted views is that all SOA really is, is four sentences:
+
+Boundaries are explicit
+Services are autonomous
+Services share schema and contract, not class
+Service compatibility is based on policy
+
+In short, the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API. 
+These services are built around business capabilities and independently deployable by fully automated deployment machinery.
+ There is a bare minimum of centralised management of these services, which may be written in different programming languages and use different data storage technologies.
