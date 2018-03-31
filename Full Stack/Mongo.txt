@@ -1,0 +1,146 @@
+MongoDB is written in C++. 
+
+Schema less − MongoDB is a document database in which one collection holds different documents. Number of fields, content and size of the document can differ from one document to another.
+
+Structure of a single object is clear.
+
+No complex joins.
+
+Deep query-ability. MongoDB supports dynamic queries on documents using a document-based query language that's nearly as powerful as SQL.
+
+Tuning.
+
+Ease of scale-out − MongoDB is easy to scale.
+
+Conversion/mapping of application objects to database objects not needed.
+
+Uses internal memory for storing the (windowed) working set, enabling faster access of data.
+
+
+- Why Use MongoDB?
+Document Oriented Storage − Data is stored in the form of JSON style documents.
+
+Index on any attribute
+
+Replication and high availability
+
+Auto-sharding
+
+Rich queries
+
+Fast in-place updates
+
+Professional support by MongoDB
+
+
+db.createCollection(name, options)
+db.createCollection("mycol", { capped : true, autoIndexId : true, size : 
+   6142800, max : 10000 } )
+
+   Capped collection is a fixed size collection that automatically overwrites its oldest entries when it reaches its maximum size. 
+
+db.COLLECTION_NAME.insert(document)
+
+
+db.mycol.find(
+   {
+      $and: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()
+
+
+db.mycol.update({'title':'MongoDB Overview'},
+   {$set:{'title':'New MongoDB Tutorial'}},{multi:true})
+
+
+ db.mycol.save(
+   {
+      "_id" : ObjectId(5983548781331adf45ec7), "title":"Tutorials Point New Topic",
+         "by":"Tutorials Point"
+   }
+)     The save() method replaces the existing document with the new document passed in the save() method.
+
+
+
+Projection means selecting only the necessary data rather than selecting whole of the data of a document     
+db.mycol.find({},{"title":1,_id:0})
+
+db.mycol.find({},{"title":1,_id:0}).limit(2).skip(3)
+
+db.mycol.find({},{"title":1,_id:0}).sort({"title":-1})
+
+
+
+db.mycol.ensureIndex({"title":1})
+Indexes are special data structures, that store a small portion of the data set in an easy-to-traverse form.
+
+
+Aggregations operations process data records and return computed results.
+Aggregation operations group values from multiple documents together, and can perform a variety of operations on the grouped data to return a single result.
+In SQL count(*) and with group by is an equivalent of mongodb aggregation.
+Eg:
+{
+   _id: ObjectId(7df78ad8902c)
+   title: 'MongoDB Overview', 
+   description: 'MongoDB is no sql database',
+   by_user: 'tutorials point',
+   url: 'http://www.tutorialspoint.com',
+   tags: ['mongodb', 'database', 'NoSQL'],
+   likes: 100
+},
+{
+   _id: ObjectId(7df78ad8902d)
+   title: 'NoSQL Overview', 
+   description: 'No sql database is very fast',
+   by_user: 'tutorials point',
+   url: 'http://www.tutorialspoint.com',
+   tags: ['mongodb', 'database', 'NoSQL'],
+   likes: 10
+},
+{
+   _id: ObjectId(7df78ad8902e)
+   title: 'Neo4j Overview', 
+   description: 'Neo4j is no sql database',
+   by_user: 'Neo4j',
+   url: 'http://www.neo4j.com',
+   tags: ['neo4j', 'database', 'NoSQL'],
+   likes: 750
+},
+
+
+db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : 1}}}])
+{
+   "result" : [
+      {
+         "_id" : "tutorials point",
+         "num_tutorial" : 2
+      },
+      {
+         "_id" : "Neo4j",
+         "num_tutorial" : 1
+      }
+   ],
+   "ok" : 1
+}
+
+
+
+Replication is the process of synchronizing data across multiple servers.
+Replication provides redundancy and increases data availability with multiple copies of data on different database servers. 
+MongoDB achieves replication by the use of replica set.
+A replica set is a group of mongod instances that host the same data set.
+In a replica, one node is primary node that receives all write operations.
+All other instances, such as secondaries, apply operations from the primary so that they have the same data set. Replica set can have only one primary node.
+
+
+Sharding is the process of storing data records across multiple machines and it is MongoDB's approach to meeting the demands of data growth.
+Sharding solves the problem with horizontal scaling
+-Why Sharding?
+In replication, all writes go to master node
+Latency sensitive queries still go to master
+Single replica set has limitation of 12 nodes
+Memory can't be large enough when active dataset is big
+Local disk is not big enough
+Vertical scaling is too expensiv
