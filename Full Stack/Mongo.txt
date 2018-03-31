@@ -143,4 +143,38 @@ Latency sensitive queries still go to master
 Single replica set has limitation of 12 nodes
 Memory can't be large enough when active dataset is big
 Local disk is not big enough
-Vertical scaling is too expensiv
+Vertical scaling is too expensive
+
+
+
+-- Advanced
+
+Embedded documents and referenced relationships
+
+RR - {
+   "_id":ObjectId("52ffc33cd85242f436000001"),
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin",
+   "address_ids": [
+      ObjectId("52ffc4a5d85242602e000000"),
+      ObjectId("52ffc4a5d85242602e000001")
+   ]
+}
+
+var result = db.users.findOne({"name":"Tom Benzamin"},{"address_ids":1})
+var addresses = db.address.find({"_id":{"$in":result["address_ids"]}})
+
+
+Covered query is a query in which −
+
+All the fields in the query are part of an index.
+All the fields returned in the query are in the same index.
+Since all the fields present in the query are part of an index, MongoDB matches the query conditions and returns the result using the same index without actually looking inside the documents.
+Since indexes are present in RAM, fetching data from indexes is much faster as compared to fetching data by scanning documents.
+
+The $explain operator provides information on the query, indexes used in a query and other statistics. .explain() - Have to ensureIndex
+
+
+MongoDB does not support multi-document atomic transactions. 
+However, it does provide atomic operations on a single document. So if a document has hundred fields the update statement will either update all the fields or none, hence maintaining atomicity at the document-level.
