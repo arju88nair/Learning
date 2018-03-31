@@ -12,3 +12,17 @@ transactions.
 ACID -  Atomicity (each transaction be "all or nothing"), Consistency (any transaction will bring the database from one valid state to another), Isoloation (concurrent execution of transactions results in a system state that would be obtained if transactions were executed sequentially), Durability (once a transaction has been committed, it will remain so)
 
 Object-Relational Mapping (ORM) is a technique that lets you query and manipulate data from a database using an object-oriented paradigm
+
+
+
+DECODE is a function in Oracle and is used to provide if-then-else type of logic to SQL.
+
+
+To fetch ALTERNATE records from a table. (EVEN NUMBERED)
+select * from emp where rowid in (select decode(mod(rownum,2),0,rowid, null) from emp);
+
+To select ALTERNATE records from a table. (ODD NUMBERED)
+select * from emp where rowid in (select decode(mod(rownum,2),0,null ,rowid) from emp);
+
+Find the 3rd MAX salary in the emp table.
+select distinct sal from emp e1 where 3 = (select count(distinct sal) from emp e2 where e1.sal <= e2.sal);
