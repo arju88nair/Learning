@@ -88,3 +88,45 @@ Object interfaces allow you to create code which specifies which methods a class
 
 The variable $this is a special variable and it refers to the same object ie. itself.
 
+Constructor Functions are special type of functions which are called automatically whenever an object is created.
+
+function __construct( $par1, $par2 ) {
+   $this->title = $par1;
+   $this->price = $par2;
+}
+
+
+Function definitions in child classes override definitions with the same name in parent classes. In a child class, we can modify the definition of a function inherited from parent class.
+
+An abstract class is one that cannot be instantiated, only inherited. You declare an abstract class with the keyword abstract
+
+final keyword, which prevents child classes from overriding a method by prefixing the definition with final. If the class itself is being defined final then it cannot be extended.
+
+
+
+Overloading is defining functions that have similar signatures, yet have different parameters. Overriding is only pertinent to derived classes, where the parent class has defined a method and the derived class wishes to override that method.
+
+In PHP, you can only overload methods using the magic method __call.
+
+
+ overriding:
+
+<?php
+
+class Foo {
+   function myFoo() {
+      return "Foo";
+   }
+}
+
+class Bar extends Foo {
+   function myFoo() {
+      return "Bar";
+   }
+}
+
+$foo = new Foo;
+$bar = new Bar;
+echo($foo->myFoo()); //"Foo"
+echo($bar->myFoo()); //"Bar"
+?>
