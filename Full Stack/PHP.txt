@@ -109,7 +109,7 @@ Overloading is defining functions that have similar signatures, yet have differe
 In PHP, you can only overload methods using the magic method __call.
 
 
- overriding:
+- Overriding:
 
 <?php
 
@@ -130,3 +130,163 @@ $bar = new Bar;
 echo($foo->myFoo()); //"Foo"
 echo($bar->myFoo()); //"Bar"
 ?>
+
+-------------
+
+If the file is not found by require(), it will cause a fatal error and halt the execution of the script. If the file is not found by include(), a warning will be issued, but execution will continue.
+
+require() includes and evaluates a specific file, while require_once() does that only if it has not been included before (on the same page). So, require_once() is recommended to use when you want to include a file where you have a lot of functions for example. This way you make sure you don’t include the file more times and you will not get the “function re-declared” error.
+
+Sessions are stored on the server, and cookies (A cookie is often used to identify a user) are stored on the user’s computers in the text file format. 
+Setcookie(“sample”, “ram”, time()+3600);
+echo $_COOKIE[“user”]
+
+mysql_select_db($db_name);
+$my_qry = mysql_query(“SELECT * FROM `users` WHERE `u_id`=’1′; “); 
+$result = mysql_fetch_array($my_qry);
+echo $result[‘First_name’];
+mysql_fetch_row
+mysql_fetch_array
+mysql_fetch_object
+mysql_fetch_assoc
+
+array explode ( string $delimiter , string $string [, int $limit ] ); 
+This function breaks a string into an array.
+
+header(“Location:index.php”);
+
+mysql_fetch_assoc function Fetch a result row as an associative array, While mysql_fetch_array() fetches an associative array, a numeric array, or both
+
+The enctype attribute determines how the form-data should be encoded when submitting it to the server. We need to set enctype as “multipart/form-data”when we are using a form for uploading files.
+
+
+Object orientation is a software/Web development methodology that is based on the modeling a real world system.An object is the core concept involved in the object orientation. An object is the copy of the real world enity.
+
+ if $var contains “message”, $$var is the same as $message.
+
+unset() sets a variable to “undefined” while unlink() deletes a file we pass to it from the file system.
+
+
+$a = '1';
+$b = &$a;
+$b = "2$b";
+echo $a.", ".$b; 21,21
+
+
+GET displays the submitted data as part of the URL, during POST this information is not shown as it’s encoded in the request.
+GET can handle a maximum of 2048 characters, POST has no such restrictions.
+GET allows only ASCII data, POST has no restrictions, binary data are also allowed.
+Normally GET is used to retrieve data while POST to insert and update.
+
+
+ini_set('display_errors', 1)  error_reporting(E_ALL)
+
+--
+
+Traits are a mechanism that allows you to create reusable code in languages like PHP where multiple inheritance is not supported. A Trait cannot be instantiated on its own.
+
+<?php
+trait Sharable {
+
+public function share($item)  
+{  
+return ‘share this item’;  
+}
+
+}  
+
+class Post {
+
+use Sharable;
+
+}
+
+class Comment {
+
+use Sharable;
+
+}  
+
+$post = new Post;  
+echo $post->share(”); // ‘share this item’
+
+$comment = new Comment;  
+echo $comment->share(”); // ‘share this item’  
+
+
+--
+
+An Abstract Class is basically a blueprint that should only ever be extended by child classes and not used directly. 
+
+Private – Visible only in its own class
+Public – Visible to any other code accessing the class
+Protected – Visible only to classes parent(s) and classes that extend the current class
+
+Getters and setters are methods used to declare or obtain the values of variables, usually private ones.
+
+--
+
+The controller handles data passed to it by the view and also passes data to the view. It’s responsible for interpretation of the data sent by the view and dispersing that data to the appropriate models awaiting results to pass back to the view. Very little, if any business logic should be occurring in the controller.
+
+The model’s job is to handle specific tasks related to a specific area of the application or functionality. Models will communicate directly with your database or other storage system and will handle business logic related to the results.
+
+The view is passed data by the controller and is displayed to the user.
+
+--
+
+To prevent SQL injections, one should always check & escape all user input
+mysqli_*
+
+$i = 016;
+echo $i / 2;
+The Output should be 7. The leading zero indicates an octal number in PHP, so the number evaluates to the decimal number 14 instead to decimal 16.
+
+PSRs are PHP Standards Recommendations that aim at standardising common aspects of PHP Development.
+
+
+Using Composer is a tool for dependency management. The candidate can declare the libraries your product relies on and Composer will manage the installation and updating of the libraries.
+
+
+
+
+<?php
+class MyClass {
+  private $firstField;
+  private $secondField;
+
+  public function __get($property) {
+    if (property_exists($this, $property)) {
+      return $this->$property;
+    }
+  }
+
+  public function __set($property, $value) {
+    if (property_exists($this, $property)) {
+      $this->$property = $value;
+    }
+
+    return $this;
+  }
+}
+?>
+
+
+Use an interface when you want to force developers working in your system (yourself included) to implement a set number of methods on the classes they'll be building.
+
+Use an abstract class when you want to force developers working in your system (yourself included) to implement a set numbers of methods and you want to provide some base methods that will help them develop their child classes.
+
+---------
+New to 7
+- New Zend engine
+- Fast
+- Facilitates Error Handling using exceptions
+- 64-Bit Windows Systems Support
+- New Spaceship and Null Coalescing Operators(<=> The spacehip operator returns 0 if both operands are equal, 1 if the left is greater, 
+	and -1 if the right is greater. It’s also called a three-way comparison operator)
+---------
+
+Java (interpreted) and C (or C++) (compiled) might have been a better example. Basically, compiled code can be executed directly by the computer’s CPU. The code of interpreted languages however must be translated at run-time from any format to CPU machine instructions. This translation is done by an interpreter.
+
+undefined means a variable has been declared but has not yet been assigned a value. On the other hand, null is an assignment value.
+
+Wrapping some data in single unit is called Encapsulation. Second advantage of encapsulation is you can make the class read only or write only by providing setter or getter method

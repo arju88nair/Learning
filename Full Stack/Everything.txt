@@ -32,3 +32,22 @@ Service compatibility is based on policy
 In short, the microservice architectural style is an approach to developing a single application as a suite of small services, each running in its own process and communicating with lightweight mechanisms, often an HTTP resource API. 
 These services are built around business capabilities and independently deployable by fully automated deployment machinery.
 There is a bare minimum of centralised management of these services, which may be written in different programming languages and use different data storage technologies.
+
+
+
+-- Data structures
+
+Linked List is a sequence of links which contains items. Each link contains a connection to another link.
+
+Link − Each link of a linked list can store a data called an element.
+
+Next − Each link of a linked list contains a link to the next link called Next.
+
+LinkedList − A Linked List contains the connection link to the first link called First.
+
+---
+Simple Linked List − Item navigation is forward only.
+
+Doubly Linked List − Items can be navigated forward and backward.
+
+Circular Linked List − Last item contains link of the first element as next and the first element has a link to the last element as previous.

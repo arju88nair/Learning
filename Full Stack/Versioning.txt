@@ -3,3 +3,6 @@ git checkout master -  To checkout to other branches
 With the master branch up to date, we'll use git rebase to consolidate:
 git rebase -i master
 If <branch> is specified, git rebase will perform an automatic git checkout <branch> before doing anything else. Otherwise it remains on the current branch.
+
+git-merge - Join two or more development histories together
+
