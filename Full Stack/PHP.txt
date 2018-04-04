@@ -3,6 +3,7 @@ Polymorphism - which classes have different functionality while sharing a common
 Impplements to extend an interface in PM
 
 An interface is similar to a class except that it cannot contain code. An interface can define method names and arguments, but not the contents of the methods
+An interface does not contain any code,it contain only declaration of methods,properties,events. Interfaces allow us to code which specifies which methods a class must have implement . Interfaces defines with the word interface . All methods in interfaces must be public
 
    <?php
 interface Shape {
@@ -49,11 +50,13 @@ echo calculateArea($circle);
 
 
 An abstract class is a mix between an interface and a class. It can define functionality as well as interface 
+Abstract classes are look like interfaces.Abstract classes may contain code although it may also have abstract method that do not have code. Abstract classes defines only signature of the method ,not implementation. The child class which inherit the abstarct class must define all the abstarct methods of its parent class .
 
 Encapsulation - Packing of data and functions into a single component
 
 Singleton pattern in order to restrict the number of instances that can be created from a resource consuming class to only one.
 Example: Database instantiation
+
 
 
 
@@ -290,3 +293,14 @@ Java (interpreted) and C (or C++) (compiled) might have been a better example. B
 undefined means a variable has been declared but has not yet been assigned a value. On the other hand, null is an assignment value.
 
 Wrapping some data in single unit is called Encapsulation. Second advantage of encapsulation is you can make the class read only or write only by providing setter or getter method
+
+If the value of the argument within the function is changed, it does not get changed outside of the function)
+
+htmlentities() - XSS
+mysql_real_escape_string - SQLi
+Token -CSRF
+
+
+A static method is accessible without needing instantiation of a class. It means there is no need to make an object to call the static methods  Scope resolution operator
+
+Dependency injection is a fancy phrase that essentially means this: class dependencies are "injected" into the class via the constructor or, in some cases, "setter" methods.
