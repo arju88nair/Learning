@@ -26,3 +26,18 @@ select * from emp where rowid in (select decode(mod(rownum,2),0,null ,rowid) fro
 
 Find the 3rd MAX salary in the emp table.
 select distinct sal from emp e1 where 3 = (select count(distinct sal) from emp e2 where e1.sal <= e2.sal);
+
+Alter table table_name add(columnname1 datatype(size), columname2 datatype(size),....);
+
+Alter table table_name modify(columnname1 datatype(size), columnname2 datatype(size),....);
+
+Truncate table command it is used to delete all rows permanently from the table.
+
+Insert into table_name values(values1, value2, value3,……);
+
+DDL – Data Definition Language
+DML – Data Manipulation Language
+
+
+
+
