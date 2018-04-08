@@ -17,4 +17,21 @@ krsort() 	Sorts an associative array in descending order, according to the key
 ksort() 	Sorts an associative array in ascending order, according to the key
 rsort() 	Sorts an indexed array in descending order
 sort() 	Sorts an indexed array in ascending order
+implode() echo implode(" ",$arr);
 
+
+addcslashes()	Returns a string with backslashes in front of the specified characters
+addslashes()	Returns a string with backslashes in front of predefined characters
+chunk_split()	Splits a string into a series of smaller parts
+explode()	Breaks a string into an array print_r (explode(" ",$str));
+html_entity_decode()	Converts HTML entities to characters
+htmlentities()	Converts characters to HTML entities
+lcfirst()	Converts the first character of a string to lowercase
+str_repeat()	Repeats a string a specified number of times
+strcmp()	Compares two strings (case-sensitive)
+strip_tags()	Strips HTML and PHP tags from a string
+stripcslashes()	Unquotes a string quoted with addcslashes()
+stripos()	Returns the position of the first occurrence of a string inside another string (case-insensitive)
+strpos()	Returns the position of the first occurrence of a string inside another string (case-sensitive)
+strrchr()	Finds the last occurrence of a string inside another string
+strrev()	Reverses a string
