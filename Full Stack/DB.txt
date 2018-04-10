@@ -52,3 +52,10 @@ Improve performance
 Query optimization
 Faster update due to less number of columns in one table
 Index improvement
+
+
+
+Row-level locks are placed on single records (rows) that the statements in a transaction define. The locks are placed as soon as any piece of the row is accessed.
+Row-level locks are always implicit, solidDB sets the locks when necessary. You cannot lock or unlock row-level locks manually.
+
+Table-level locks can be thought of as metadata locks; they prevent concurrent users from making schema changes (DDL operations) simultaneously or while records within the table are being changed.

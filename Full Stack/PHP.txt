@@ -406,3 +406,7 @@ Makes a family algorithm and encapsulates each algorithm.
    echo "Sorted by date:\n";
    print_r($collection->elements);
 ?>
+
+
+Abstract factory
+An abstract factory defines what objects the non-abstract or concrete factory will need to be able to create. 
