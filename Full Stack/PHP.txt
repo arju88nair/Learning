@@ -304,3 +304,105 @@ Token -CSRF
 A static method is accessible without needing instantiation of a class. It means there is no need to make an object to call the static methods  Scope resolution operator
 
 Dependency injection is a fancy phrase that essentially means this: class dependencies are "injected" into the class via the constructor or, in some cases, "setter" methods.
+
+------------------
+
+
+
+Design Patterns
+
+
+-Singleton Patter
+A Class has one instance, It provides a global access point to it, Following code will explain about singleton concept.
+
+<?php
+   class Singleton {
+      public static function getInstance() {
+         static $instance = null;
+         
+         if (null === $instance) {
+            $instance = new static();
+         }
+         return $instance;
+      }
+      protected function __construct() {
+      }
+      
+      private function __clone() {
+      }
+      
+      private function __wakeup() {
+      }
+   }
+   
+   class SingletonChild extends Singleton {
+   }
+   
+   $obj = Singleton::getInstance();
+   var_dump($obj === Singleton::getInstance());
+   
+   $anotherObj = SingletonChild::getInstance();
+   var_dump($anotherObj === Singleton::getInstance());
+   var_dump($anotherObj === SingletonChild::getInstance()); 
+?>
+
+
+
+Factory
+A Class Simple Creates the object and you want to use that object
+<?php
+   class Automobile {
+      private $bikeMake;
+      private $bikeModel;
+      
+      public function __construct($make, $model) {
+         $this->bikeMake = $make;
+         $this->bikeModel = $model;
+      }
+      
+      public function getMakeAndModel() {
+         return $this->bikeMake . ' ' . $this->bikeModel;
+      }
+   }
+   
+   class AutomobileFactory {
+      public static function create($make, $model) {
+         return new Automobile($make, $model);
+      }
+   }
+   
+   $pulsar = AutomobileFactory::create('ktm', 'Pulsar');
+   print_r($pulsar->getMakeAndModel());
+   
+?>
+
+
+Strategy pattern
+Makes a family algorithm and encapsulates each algorithm. 
+
+<?php
+   $elements = array(
+      array(
+         'id' => 2,
+         'date' => '2011-01-01',
+      ),
+      array(
+         'id' => 1,
+         'date' => '2011-02-01'
+      )
+   );
+   
+   $collection = new ObjectCollection($elements);
+   
+   $collection->setComparator(new IdComparator());
+   $collection->sort();
+   
+   echo "Sorted by ID:\n";
+   print_r($collection->elements);
+   
+   $collection->setComparator(new DateComparator());
+   $collection->sort();
+   
+   echo "Sorted by date:\n";
+   print_r($collection->elements);
+?>

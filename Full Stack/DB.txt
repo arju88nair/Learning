@@ -33,11 +33,22 @@ Alter table table_name modify(columnname1 datatype(size), columnname2 datatype(s
 
 Truncate table command it is used to delete all rows permanently from the table.
 
-Insert into table_name values(values1, value2, value3,……);
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
 
 DDL – Data Definition Language
 DML – Data Manipulation Language
 
 
+Normalization is the process of efficiently organizing data in a database. There are two goals of the normalization process: eliminating redundant data (for example, storing the same data in more than one table) and ensuring data dependencies make sense (only storing related data in a table)
 
-
+Benefits :
+Eliminate data redundancy
+Improve performance
+Query optimization
+Faster update due to less number of columns in one table
+Index improvement

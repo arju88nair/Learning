@@ -14,7 +14,7 @@ The method signature for the HTTP kernel's handle method is quite simple: receiv
 Once the application has been bootstrapped and all service providers have been registered, the  Request will be handed off to the router for dispatching. 
 
 
-index.php -> bootstrap/app.php(instance from autoload of composer) -> HTTP/Console kerner -> Check the bootrappers -> Request handler
+index.php -> bootstrap/app.php(instance from autoload of composer) -> HTTP/Console kernel -> Check the bootrappers -> Request handler
 
 -------
 
