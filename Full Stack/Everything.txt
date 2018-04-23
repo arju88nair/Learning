@@ -51,3 +51,6 @@ Simple Linked List − Item navigation is forward only.
 Doubly Linked List − Items can be navigated forward and backward.
 
 Circular Linked List − Last item contains link of the first element as next and the first element has a link to the last element as previous.
+
+
+An interpreted language is a type of programming language for which most of its implementations execute instructions directly and freely, without previously compiling a program into machine-language instructions. The interpreter executes the program directly, translating each statement into a sequence of one or more subroutines into another language (often machine code).
