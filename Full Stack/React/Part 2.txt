@@ -13,3 +13,30 @@ const theBestString = 'tralalalala i am da best';
 
 ReactDOM.render(<h1>{theBestString}</h1>, document.getElementById('app'));
 ----
+
+
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+
+
+After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions:
+
+By default, React DOM escapes any values embedded in JSX before rendering them
