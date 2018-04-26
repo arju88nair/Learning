@@ -56,3 +56,106 @@ setInterval(tick, 1000);
 State is the place where the data comes from. We should always try to make our state as simple as possible and minimize the number of stateful components. If we have, for example, ten components that need data from the state, we should create one container component that will keep the state for all of them.
 -------
 props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
+The main difference between state and props is that props are immutable. This is why the container component should define the state that can be updated and changed, while the child components should only pass data from the state using props.
+-------
+
+Default Props
+You can also set default property values directly on the component constructor instead of adding it to the reactDom.render() element.
+
+App.jsx
+import React from 'react';
+
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.headerProp}</h1>
+            <h2>{this.props.contentProp}</h2>
+         </div>
+      );
+   }
+}
+App.defaultProps = {
+   headerProp: "Header from props...",
+   contentProp:"Content from props..."
+}
+export default App;
+main.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(<App/>, document.getElementById('app'));
+-------
+
+import React from 'react';
+
+class App extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.headerProp}</h1>
+            <h2>{this.props.contentProp}</h2>
+         </div>
+      );
+   }
+}
+export default App;
+main.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(<App headerProp = "Header from props..." contentProp = "Content
+   from props..."/>, document.getElementById('app'));
+
+export default App;
+-------
+
+State and props
+
+App.jsx
+import React from 'react';
+
+class App extends React.Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         header: "Header from props...",
+         content: "Content from props..."
+      }
+   }
+   render() {
+      return (
+         <div>
+            <Header headerProp = {this.state.header}/>
+            <Content contentProp = {this.state.content}/>
+         </div>
+      );
+   }
+}
+class Header extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.headerProp}</h1>
+         </div>
+      );
+   }
+}
+class Content extends React.Component {
+   render() {
+      return (
+         <div>
+            <h2>{this.props.contentProp}</h2>
+         </div>
+      );
+   }
+}
+export default App;
+main.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+
+ReactDOM.render(<App/>, document.getElementById('app'));
