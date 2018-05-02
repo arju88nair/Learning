@@ -247,3 +247,50 @@ When the Clock output is inserted in the DOM, React calls the componentDidMount(
 Every second the browser calls the tick() method. Inside it, the Clock component schedules a UI update by calling setState() with an object containing the current time. Thanks to the setState() call, React knows the state has changed, and calls the render() method again to learn what should be on the screen. This time, this.state.date in the render() method will be different, and so the render output will include the updated time. React updates the DOM accordingly.
 
 If the Clock component is ever removed from the DOM, React calls the componentWillUnmount() lifecycle hook so the timer is stopped.
+
+------------
+
+Using states
+this.setState({comment: 'Hello'});
+
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+cause this.state and this.props update async
+
+// Correct
+this.setState((prevState, props) => ({
+  counter: prevState.counter + props.increment
+}));
+
+---------
+
+
+When you call setState(), React merges the object you provide into the current state.
+
+For example, your state may contain several independent variables:
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],
+      comments: []
+    };
+  }
+Then you can update them independently with separate setState() calls:
+
+  componentDidMount() {
+    fetchPosts().then(response => {
+      this.setState({
+        posts: response.posts
+      });
+    });
+
+    fetchComments().then(response => {
+      this.setState({
+        comments: response.comments
+      });
+    });
+  }
