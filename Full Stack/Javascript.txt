@@ -190,3 +190,35 @@ function loadScript(src, callback) {
   document.head.append(script);
 }
 ---------------
+
+let works similarly to var, but the variable it declares is block-scoped, it only exists within the current block. var is function-scoped.
+
+function order(x, y) {
+    if (x > y) { // (A)
+        let tmp = x;
+        x = y;
+        y = tmp;
+    }
+    console.log(tmp===x); // ReferenceError: tmp is not defined
+    return [x, y];
+}
+
+const works like let, but the variable you declare must be immediately initialized, with a value that can’t be changed afterwards.
+
+const foo;
+    // SyntaxError: missing = in const declaration
+
+const bar = 123;
+bar = 456;
+    // TypeError: `bar` is read-only
+
+
+
+In contrast, var-declared variables are function-scoped:
+
+function func() {
+    if (true) {
+        var tmp = 123;
+    }
+    console.log(tmp); // 123
+}
