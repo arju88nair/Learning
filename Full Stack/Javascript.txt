@@ -222,3 +222,13 @@ function func() {
     }
     console.log(tmp); // 123
 }
+
+-----------------
+(http://exploringjs.com/es6/ch_arrow-functions.html)
+Arrow function
+
+const arr = [1, 2, 3];
+const squares = arr.map(x => x * x);
+
+// Traditional function expression:
+const squares = arr.map(function (x) { return x * x });
