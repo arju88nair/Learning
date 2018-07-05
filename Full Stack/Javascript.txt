@@ -96,7 +96,7 @@ fetch(url, {
     console.log('Request failed', error);
   });
 
-  
+
   Example
     function createNode(element) {
       return document.createElement(element);
@@ -127,3 +127,66 @@ fetch(url, {
     console.log(JSON.stringify(error));
   });   
 
+-----------
+A callback is a function that is to be executed after another function (normally asynchronous) has finished executing — hence the name ‘call back’.
+
+(https://javascript.info/callbacks)
+Most of the JS functions are asynchronous
+
+function loadScript(src) {
+  let script = document.createElement('script');
+  script.src = src;
+  document.head.append(script);
+}
+
+loadScript('/my/script.js'); // the script has "function newFunction() {…}"
+newFunction(); // no such function!
+Will fail
+
+So we add callbacks
+
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+
+  script.onload = () => callback(script);
+
+  document.head.append(script);
+}
+Now if we want to call new functions from the script, we should write that in the callback:
+
+loadScript('/my/script.js', function() {
+  // the callback runs after the script is loaded
+  newFunction(); // so now it works
+  ...
+});
+
+
+
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+  script.onload = () => callback(script);
+  document.head.append(script);
+}
+
+loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+  alert(`Cool, the ${script.src} is loaded`);
+  alert( _ ); // function declared in the loaded script
+});
+
+
+Here, after the script.onload, callback is loaded witht eh argument script.
+
+
+Error handling
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+
+  script.onload = () => callback(null, script);
+  script.onerror = () => callback(new Error(`Script load error for ${src}`));
+
+  document.head.append(script);
+}
+---------------
