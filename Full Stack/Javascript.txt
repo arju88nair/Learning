@@ -20,3 +20,110 @@ Has no side-effects
 
 
 Shared state is any variable, object, or memory space that exists in a shared scope, or as the property of an object being passed between scopes.
+
+
+---------(https://developers.google.com/web/updates/2015/03/introduction-to-fetch#response_types)
+An XMLHttpRequest would need two listeners to be set to handle the success and error cases and a call to open() and send(). 
+
+function reqListener() {
+  var data = JSON.parse(this.responseText);
+  console.log(data);
+}
+
+function reqError(err) {
+  console.log('Fetch Error :-S', err);
+}
+
+var oReq = new XMLHttpRequest();
+oReq.onload = reqListener;
+oReq.onerror = reqError;
+oReq.open('get', './api/some.json', true);
+oReq.send();
+
+
+
+Replaces with
+
+fetch('./api/some.json')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+
+
+ Types
+fetch('users.json').then(function(response) {
+    console.log(response.headers.get('Content-Type'));
+    console.log(response.headers.get('Date'));
+
+    console.log(response.status);
+    console.log(response.statusText);
+    console.log(response.type);
+    console.log(response.url);
+});
+
+Gives response.type of "basic", "cors" or "opaque". 
+When a request is made for a resource on the same origin, the response will have a basic type and there aren't any restrictions on what you can view from the response.
+If a request is made for a resource on another origin which returns the CORs headers, then the type is cors. cors and basic responses are almost identical except that a cors response restricts the headers you can view to `Cache-Control`, `Content-Language`, `Content-Type`, `Expires`, `Last-Modified`, and `Pragma`.
+An opaque response is for a request made for a resource on a different origin that doesn't return CORS headers. With an opaque response we won't be able to read the data returned or view the status of the request, meaning we can't check if the request was successful or not.
+
+POST
+fetch(url, {
+    method: 'post',
+    headers: {
+      "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    body: 'foo=bar&lorem=ipsum'
+  })
+  .then(json)
+  .then(function (data) {
+    console.log('Request succeeded with JSON response', data);
+  })
+  .catch(function (error) {
+    console.log('Request failed', error);
+  });
+
+  
+  Example
+    function createNode(element) {
+      return document.createElement(element);
+  }
+
+  function append(parent, el) {
+    return parent.appendChild(el);
+  }
+
+  const ul = document.getElementById('authors');
+  const url = 'https://randomuser.me/api/?results=10';
+  fetch(url)
+  .then((resp) => resp.json())
+  .then(function(data) {
+    let authors = data.results;
+    return authors.map(function(author) {
+      let li = createNode('li'),
+          img = createNode('img'),
+          span = createNode('span');
+      img.src = author.picture.medium;
+      span.innerHTML = `${author.name.first} ${author.name.last}`;
+      append(li, img);
+      append(li, span);
+      append(ul, li);
+    })
+  })
+  .catch(function(error) {
+    console.log(JSON.stringify(error));
+  });   
+
