@@ -225,6 +225,7 @@ function func() {
 
 -----------------
 (http://exploringjs.com/es6/ch_arrow-functions.html)
+
 Arrow function
 
 const arr = [1, 2, 3];
@@ -232,3 +233,41 @@ const squares = arr.map(x => x * x);
 
 // Traditional function expression:
 const squares = arr.map(function (x) { return x * x });
+
+--------------
+let user = new Object(); // "object constructor" syntax
+let user = {};  // "object literal" syntax
+let user = {
+  name: "John",
+  age: 30,
+  "likes birds": true  // multiword property name must be quoted
+};
+------------
+The main concept of memory management in JavaScript is reachability.
+
+----------------
+This
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+user.sayHi = function() {
+  alert("Hello!");
+};
+
+user.sayHi(); // Hello!
+
+It’s common that an object method needs to access the information stored in the object to do its job.
+let user = {
+  name: "John",
+  age: 30,
+
+  sayHi() {
+    alert(this.name);
+  }
+
+};
+
+user.sayHi(); // John
