@@ -271,3 +271,63 @@ let user = {
 };
 
 user.sayHi(); // John
+-----------
+
+jQuery .live()
+Attach an event handler for all elements which match the current selector, now and in the future.
+
+jQuery .on()
+Attach an event handler function for one or more events to the selected elements.
+
+$(function () {
+    $("#container a").bind("click", function () {
+        console.log("clicked");
+    });
+});
+When you are calling bind() , you are attaching an event handler to every single matched element in the selection, in our case every anchor element in the div ‘container’.
+
+The same code can also be written using click() which is a shorthand way of writing bind().
+
+$("#container a").click(function () {
+    console.log("clicked");
+});
+
+
+
+$(function () {
+    $("#container a").live("click", function () {
+        console.log("clicked");
+    });
+});
+live() implements event delegation. The handler bound to live() is not bound to the anchor element, as it may so appear. Instead live() binds a handler to the root of the DOM. So rather than attaching 100’s of event handlers to all the anchor elements in the ‘container’ div, using live() attaches just one event handler to the root document, along with the associated selector (in our case #container a) and event information.
+
+--------
+
+Async 
+
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  var result = await resolveAfter2Seconds();
+  console.log(result);
+  // expected output: "resolved"
+}
+
+asyncCall();
+
+Returns an AsyncFunction object. An asynchronous function is a function which operates asynchronously via the event loop, using an implicit Promise to return its result
+
+
+---------------
+
+Class Inheritance: A class is like a blueprint — a description of the object to be created. Classes inherit from classes can create subclass relationships
+
+Prototypal Inheritance: A prototype is a working object instance. Objects inherit directly from other objects.
+Class objects have a property called `prototype`, which is also an object.

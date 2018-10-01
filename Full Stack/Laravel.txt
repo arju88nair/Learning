@@ -83,3 +83,25 @@ class User extends Model
 When building JSON APIs, you will often need to convert your models and relationships to arrays or JSON. 
 return $user->toArray();
 return $user->toJson();
+---- Loggin
+namespace App\Providers;
+ 
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use DB;
+use Log;
+ 
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+ 
+        DB::listen(function($query) {
+            Log::info(
+                $query->sql,
+                $query->bindings,
+                $query->time
+            );
+        });
+    }
